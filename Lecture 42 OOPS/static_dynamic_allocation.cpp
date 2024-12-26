@@ -38,6 +38,15 @@ int main(){
 
     // static allocation
     Hero a;
+
+    //dynamic
+    Hero *b=new Hero;
+
+    
+
+
+
+
     a.sethealth(1);
     a.setlevel('A');
     cout<<"level is "<<a.level<<endl;
@@ -54,6 +63,4 @@ int main(){
     cout<<"level is "<<b->level<<endl;
     cout<<"health is "<<b->gethealth()<<endl;
 
-
-    
 }
