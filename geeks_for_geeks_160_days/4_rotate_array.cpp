@@ -52,7 +52,7 @@ void rotate_array3(vector<int> &arr,int d){//[Expected Approach 2] Using Reversa
 int main(){
     vector <int> arr={1,2,3,4,5};
     int d=2;
-    int n=arr.size();
+    //int n=arr.size();
     rotate_array2(arr,d);
     for(int i=0;i<n;i++){
         cout<<arr[i]<<endl;
