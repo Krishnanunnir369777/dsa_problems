@@ -11,10 +11,9 @@ vector<int> majority(vector<int> &arr){//[Naive Approach] Using Nested Loops –
         int count=0;
         
         for(int j=i;j<n ;j++){
-
+            
             if(arr[j]==arr[i]){
                 count+=1;
-              
             }
         }
         if(count>(n/3)){
