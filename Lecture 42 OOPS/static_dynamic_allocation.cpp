@@ -39,8 +39,7 @@ int main(){
     // static allocation
     Hero a;
 
-    //dynamic
-    Hero *b=new Hero;
+   
 
     
 

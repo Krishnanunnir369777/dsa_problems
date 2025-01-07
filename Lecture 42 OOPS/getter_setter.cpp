@@ -28,7 +28,7 @@ class Hero{
     void sethealth(int h){
         health=h;
     }
-    void setleavel(char ch){
+    void setlevel(char ch){
         level=ch;
     }
 

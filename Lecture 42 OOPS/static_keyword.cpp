@@ -72,7 +72,7 @@ class Hero{
     }
     static int random(){
 
-       // cout<<this->health<<endl;    // error will showit can only access static members
+       // cout<<this->health<<endl;    // error will show it can only access static members
 
        return timetocomplete;
 
@@ -102,13 +102,6 @@ int main(){
     b.timetocomplete=10;
     cout<<a.timetocomplete<<endl;
     cout<<b.timetocomplete<<endl;
-
-
-
-
-
-
-
 
     return 0;
 
