@@ -69,6 +69,8 @@ int main(){
 //copy constructor
     Hero R(s);
     R.print();
+    
+    
 
 
 }
