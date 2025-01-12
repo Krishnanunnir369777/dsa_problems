@@ -9,13 +9,15 @@ int search1(int nums[5],int n, int target) {
           int mid = (s+e)/2;
           if(nums[mid]==target) return mid;
           if(nums[mid]>=nums[0]){
-                     //left side
-          if(target>=nums[s]  && target<nums[mid]){
+                
+                
+                //left side
+            if(target>=nums[s]  && target<nums[mid]){
               e = mid-1;
-          }
-          else {
+            }
+            else {
               s = mid+1;
-          }
+            }
           }
           else{
               //right side
@@ -32,7 +34,7 @@ int search1(int nums[5],int n, int target) {
 int main(){
     int arr[5]={12, 15, 18, 2, 4};
     int n=5;
-    int ans=search1(arr,n,4);
+    int ans=search1(arr,n,2);
     cout<<ans;
 
 }
