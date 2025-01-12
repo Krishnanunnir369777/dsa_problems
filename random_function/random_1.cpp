@@ -5,6 +5,14 @@
 using namespace std;
 #include <algorithm>
 
+class Node{
+    public:
+    int data;
+    Node* next;
+
+    public:
+    Node(int data,Node* next1)
+}
 int main(){
 
 
