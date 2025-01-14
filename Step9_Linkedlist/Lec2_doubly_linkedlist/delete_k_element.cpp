@@ -68,7 +68,7 @@ Node* delete_el(Node* head,int k){
     }
     int cnt=0;
     Node* knode=head;
-    while(knode!=0){
+    while(knode!=NULL){
         cnt++;
         if(k==cnt){
             break;

@@ -35,34 +35,42 @@ Node* arr2ll(vector<int> &arr){
     return head;
 
 };
-Node* func(Node* head){
-    if(head==NULL || head->next==NULL){
-        return head;
+Node* func(Node* head1, Node* head2){
+    Node* dummy=new Node();
+    Node* curr=dummy;
+    int carry=0;
+    while(head1!=NULL || head2!=NULL){
+        int sum=0;
+        if(head1!=NULL){
+            sum+=head1->data;
+            head1=head1->next;
+        }
+        if(head2!=NULL){
+            sum+=head2->data;
+            head2=head2->next;
+        }
+        sum+=carry;
+        carry=sum/10;
+        Node* new_node=new Node(sum%10);
+        curr->next=new_node;
+        curr=curr->next;
     }
-    Node* odd =head;
-    Node* even =head->next;
-    Node* even_Head=head->next;
-
-    while(even!=NULL && even->next!=NULL){
-        odd->next=odd->next->next;
-        even->next=even->next->next;
-
-        odd=odd->next;
-        even=even->next;
-
+    if(carry){
+        Node* node=new Node(carry);
+        curr->next=node;
     }
-    odd->next=even_Head;
-
-    return head;
+    return dummy->next;
 };
 
 
 int main(){
 
-    vector<int> arr={1,2,3,4,5,6};
+    vector<int> arr1={2,4,3};
+    vector<int> arr2={5,6,4};
 
-    Node* head=arr2ll(arr);
-    head=func(head);
+    Node* head1=arr2ll(arr1);
+    Node* head2=arr2ll(arr2);
+    Node* head=func(head1,head2);
     Node* temp=head;
 
     while(temp){
