@@ -1,32 +1,39 @@
 #include <iostream>
-#include <vector>
-#include <cmath>
-#include <cstdlib>
 using namespace std;
-#include <algorithm>
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 
-using namespace std;
 
-struct Node {
+class Node{
+    public:
     int data;
     Node* next;
-    Node(int x) : data(x), next(nullptr) {}
+    
+    public:
+    Node (int data1,Node* next1){
+        data=data1;
+        next=next1;
+    }
+    public:
+    
+    Node (int data1){
+        data=data1;
+        next=nullptr;
+    }
 };
 
-Node* arr2ll(const vector<int>& arr) {
-    if (arr.empty()) return nullptr;
-    Node* head = new Node(arr[0]);
-    Node* current = head;
-    for (size_t i = 1; i < arr.size(); ++i) {
-        current->next = new Node(arr[i]);
-        current = current->next;
+Node* arr2ll(vector<int> &arr){
+    Node* head=new Node(arr[0]);
+    Node* mover =head;
+    for(int i=1;i<arr.size();i++){
+        Node* temp=new Node(arr[i]);
+        mover->next=temp;
+        mover=temp;
     }
     return head;
-}
 
-Node* func(struct Node* head) {
+};
+
+ Node* func(Node* head) {
         if (!head || !(head->next))
             return head;
 
@@ -73,34 +80,21 @@ Node* func(struct Node* head) {
         delete twoD;
 
         return head;
-    }
-
-int main() {
-    vector<int> arr = {2, 1, 0};
-    Node* head = arr2ll(arr);
-    head = func(head);
-    Node* temp = head;
-
-    while (temp) {
-        cout << temp->data << " ";
-        temp = temp->next;
-    }
-    cout << endl;
-
-    return 0;
 }
 
+int main(){
 
-
-
-Node* arr2ll(vector<int> &arr){
-    Node* head=new Node(arr[0]);
-    Node* mover =head;
-    for(int i=1;i<arr.size();i++){
-        Node* temp=new Node(arr[i]);
-        mover->next=temp;
-        mover=temp;
+    vector<int> arr={2,1,0,0,1,2,2,1};
+    Node* head=arr2ll(arr);
+    head=func(head);
+    Node* temp=head;
+    
+    while(temp){
+        cout<<temp->data<<" ";
+        temp=temp->next;
     }
-    return head;
+    cout<<endl;
+    
+    //cout<<lengthofll(head);
 
-};
+}
