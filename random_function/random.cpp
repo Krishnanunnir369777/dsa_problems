@@ -7,7 +7,11 @@ using namespace std;
 
 int main(){
 
-    cout<<5/2;
+    vector<string> s={"apple","app","appla"};
+    sort(s.begin(),s.end());
+    for(auto i:s){
+        cout<<i<<" ";
+    }
 
 
 }
