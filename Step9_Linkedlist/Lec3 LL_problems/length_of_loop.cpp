@@ -51,6 +51,32 @@ int  func1(Node* head){
     return 0;
 
 }
+// Function to detect a loop in a linked list
+// and return the starting node of the loop
+Node* detectLoop(Node* head) {
+    
+    // Use temp to traverse the linked list
+    Node* temp = head;
+    
+    // hashmap to store all visited nodes
+    unordered_map<Node*, int> mp;
+    
+    // Traverse the list using temp
+    while(temp!=NULL){
+        // check if temp has been encountered again
+        if(mp.count(temp)!=0){
+            // A loop is detected hence return temp
+            return temp;
+        }
+        // store temp as visited
+        mp[temp] = 1;
+        // iterate through the list
+        temp = temp->next;
+    }
+
+    // If no loop is detected, return nullptr
+    return nullptr; 
+}
 
 int findLength(Node* slow, Node* fast){             //optimised
 
