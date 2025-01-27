@@ -4,14 +4,11 @@ using namespace std;
 
 
 
-
 int main(){
 
-    vector<string> s={"apple","app","appla"};
-    sort(s.begin(),s.end());
-    for(auto i:s){
-        cout<<i<<" ";
-    }
+    cout<<13%6;
+
+   
 
 
 }
