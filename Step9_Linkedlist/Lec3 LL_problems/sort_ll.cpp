@@ -70,13 +70,68 @@ Node* func1(Node* head){                          //Time Complexity: O(N) + O(N 
     // sorted linked list
     return head; 
 }
+Node* mergesorted_ll(Node* list1,Node* list2){
+    Node* dummy=new Node(-1);
+    Node* temp=dummy;
 
+    while(list1!=NULL && list2!=NULL){
+        if(list1->data<list2->data){
+            temp->next=list1;
+            temp=list1;
+            list1=list1->next;
+        }
+        else{
+            temp->next=list2;
+            temp=list2;
+            list2=list2->next;
+
+        }
+    }
+    if(list1!=NULL){
+        temp->next=list1;
+    }
+    else{
+        temp->next=list2;
+    }
+    return dummy->next;
+}
+Node* findmiddle(Node* head){
+    if(head==NULL && head->next==NULL){
+        return head;
+    }
+    Node* slow=head;
+    Node* fast=head->next;
+    while(fast!=NULL && fast->next!=NULL){
+        slow=slow->next;
+        fast=fast->next->next;
+
+    }
+    return slow;
+}
+Node* func2(Node* head){
+    if(head==NULL || head->next==NULL){
+        return head;
+    }
+    Node* middle=findmiddle(head);
+
+    Node* right=middle->next;
+    middle->next=NULL;
+    Node* left=head;
+
+    left=func2(left);
+
+    right=func2(right);
+
+    return mergesorted_ll(left,right);
+
+
+}
 
 int main(){
 
     vector<int> arr={5,4,3,2,1};
     Node* head=arr2ll(arr);
-    head=func1(head);
+    head=func2(head);
     Node* temp=head;
     
     while(temp){

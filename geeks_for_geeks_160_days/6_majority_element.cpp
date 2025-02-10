@@ -41,62 +41,49 @@ vector<int> majority(vector<int> &arr){//[Naive Approach] Using Nested Loops –
 #include <algorithm>
 #include <limits.h>
 using namespace std;
+vector<int> majorityElement(vector<int> v) {
+    int n = v.size(); //size of the array
 
-// Function to find Majority element in an array
-vector<int> findMajority(vector<int> &arr) { //[Expected Approach] Boyer-Moore’s Voting Algorithm – O(n) Time and O(1) Space
-    int n = arr.size();
+    int cnt1 = 0, cnt2 = 0; // counts
+    int el1 = INT_MIN; // element 1
+    int el2 = INT_MIN; // element 2
 
-    // Initialize two candidates and their counts
-    int ele1 = -1, ele2 = -1, cnt1 = 0, cnt2 = 0;
-
-    for (int ele : arr) {
-      
-        // Increment count for candidate 1
-        if (ele1 == ele) {
-            cnt1++;
+    // applying the Extended Boyer Moore's Voting Algorithm:
+    for (int i = 0; i < n; i++) {
+        if (cnt1 == 0 && el2 != v[i]) {
+            cnt1 = 1;
+            el1 = v[i];
         }
-      
-        // Increment count for candidate 2
-        else if (ele2 == ele) {
-            cnt2++;
+        else if (cnt2 == 0 && el1 != v[i]) {
+            cnt2 = 1;
+            el2 = v[i];
         }
-      
-        // New candidate 1 if count is zero
-        else if (cnt1 == 0) {
-            ele1 = ele;
-            cnt1++;
-        }
-      
-        // New candidate 2 if count is zero
-        else if (cnt2 == 0) {
-            ele2 = ele;
-            cnt2++;
-        }
-      
-        // Decrease counts if neither candidate
+        else if (v[i] == el1) cnt1++;
+        else if (v[i] == el2) cnt2++;
         else {
-            cnt1--;
-            cnt2--;
+            cnt1--, cnt2--;
         }
     }
 
-    vector<int> res;
-    cnt1 = 0;
-    cnt2 = 0;
+    vector<int> ls; // list of answers
 
-    // Count the occurrences of candidates
-    for (int ele : arr) {
-        if (ele1 == ele) cnt1++;
-        if (ele2 == ele) cnt2++;
+    // Manually check if the stored elements in
+    // el1 and el2 are the majority elements:
+    cnt1 = 0, cnt2 = 0;
+    for (int i = 0; i < n; i++) {
+        if (v[i] == el1) cnt1++;
+        if (v[i] == el2) cnt2++;
     }
 
-    // Add to result if they are majority elements
-    if (cnt1 > n / 3) res.push_back(ele1);
-    if (cnt2 > n / 3 && ele1 != ele2) res.push_back(ele2);
-    
-    if(res.size() == 2 && res[0] > res[1])
-        swap(res[0], res[1]);
-    return res;
+    int mini = int(n / 3) + 1;
+    if (cnt1 >= mini) ls.push_back(el1);
+    if (cnt2 >= mini) ls.push_back(el2);
+
+    // Uncomment the following line
+    // if it is told to sort the answer array:
+    // sort(ls.begin(), ls.end()); //TC --> O(2*log2) ~ O(1);
+
+    return ls;
 }
 
 int main(){
