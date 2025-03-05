@@ -14,6 +14,7 @@ void solve(int index,int target,vector<int>& arr,vector<int>& output,vector<vect
         solve(index,target-arr[index],arr,output,ans);
         output.pop_back();
     }
+    
     solve(index+1,target,arr,output,ans);
 
 }
