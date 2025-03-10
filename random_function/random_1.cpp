@@ -49,7 +49,7 @@ int main(){
     vector<string> ans=func1(3);
 
     for(auto i:ans){
-        cout<<i<<endl;
+        cout<<i<<endl
     }
 
 }
