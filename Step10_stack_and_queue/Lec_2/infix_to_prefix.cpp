@@ -1,23 +1,20 @@
-// C++ program to convert infix to prefix
 #include <bits/stdc++.h>
 using namespace std;
 
-// Check if character is an operator
-bool isOperator(char ch) {
-    return (ch == '+' || ch == '-' || 
-    ch == '*' || ch == '/' || ch == '^');
-}
-
-// Get precedence of operators
-int operatorPrecedence(char op) {
-    if (op == '^') return 3;
-    if (op == '*' || op == '/') return 2;
-    if (op == '+' || op == '-') return 1;
-    return -1;
+int prec(char c) {
+    if (c == '^')
+        return 3;
+    else if (c == '/' || c == '*')
+        return 2;
+    else if (c == '+' || c == '-')
+        return 1;
+    else
+        return -1;
 }
 
 // Convert infix expression to postfix notation
 string convertInfixToPostfix(string s) {
+
     stack<char> st;
     string res;
     int sz = s.size();
@@ -26,19 +23,20 @@ string convertInfixToPostfix(string s) {
         char c=s[i];
         if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') ||
             (c >= '0' && c <= '9')){
-             res+= c; 
+                res += c;
             }
-            else if (s[i] == '(') {
+            
+         else if (s[i] == '(') {
             st.push(s[i]);
-        } else if (s[i] == ')') {
+        }else if (s[i] == ')') {
             while (!st.empty() && st.top() != '(') {
                 res += st.top();
                 st.pop();
             }
             st.pop();
         } else {
-            while (!st.empty() && operatorPrecedence(s[i]) <= 
-            operatorPrecedence(st.top())) {
+            while (!st.empty() && prec(s[i]) <
+            prec(st.top())) {
                 res += st.top();
                 st.pop();
             }
@@ -56,6 +54,7 @@ string convertInfixToPostfix(string s) {
 
 // Convert infix expression to prefix notation
 string convertToPrefix(string infix) {
+
     reverse(infix.begin(), infix.end());
 
     for (int i = 0; i < infix.size(); i++) {
@@ -67,13 +66,15 @@ string convertToPrefix(string infix) {
     }
 
     string postfix = convertInfixToPostfix(infix);
+
     reverse(postfix.begin(), postfix.end());
 
     return postfix;
 }
 
-int main() {
-    string s = "(a-b/c)*(a/k-l)";
-    cout << convertToPrefix(s) << endl;
-    return 0;
+int main(){
+    string s="A*(B+C)/D";
+    string ans=convertToPrefix(s);
+    cout<<ans;
+
 }
