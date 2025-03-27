@@ -18,7 +18,7 @@ string convertInfixToPostfix(string s) {
     stack<char> st;
     string res;
     int sz = s.size();
-
+ 
     for (int i = 0; i < sz; i++) {
         char c=s[i];
         if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') ||
@@ -64,6 +64,7 @@ string convertToPrefix(string infix) {
             infix[i] = '(';
         }
     }
+    
 
     string postfix = convertInfixToPostfix(infix);
 
@@ -73,7 +74,7 @@ string convertToPrefix(string infix) {
 }
 
 int main(){
-    string s="A*(B+C)/D";
+    string s="(a-b/c)*(a/k-l)";
     string ans=convertToPrefix(s);
     cout<<ans;
 
