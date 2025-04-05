@@ -44,7 +44,7 @@ vector<int> func2(vector<int>& nums){       //O(n)
         st.push(nums[i]);
     }
     return ans;
-
+    
 }
 
 int main(){
