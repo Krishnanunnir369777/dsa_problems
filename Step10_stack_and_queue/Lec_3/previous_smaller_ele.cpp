@@ -48,7 +48,7 @@ vector<int> func2(vector<int>& nums){       //O(n)
 }
 
 int main(){
-    vector<int> nums={3,2,1};
+    vector<int> nums={1,2,3};
     vector<int>ans=func2(nums);
     for(auto it:ans){
         cout<<it<<" ";
