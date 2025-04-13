@@ -31,11 +31,9 @@ int func2(vector < int > & heights) {  //Time Complexity: O( N )
         leftsmall[i] = st.top() + 1;
       st.push(i);
     }
-
     // clear the stack to be re-used
     while (!st.empty())
       st.pop();
-
 
     for (int i = n - 1; i >= 0; i--) {
       while (!st.empty() && heights[st.top()] >= heights[i])
@@ -56,9 +54,31 @@ int func2(vector < int > & heights) {  //Time Complexity: O( N )
     return maxA;
 }
 
+int func3(vector<int>& arr){
+  int n=arr.size();
+  stack<int> st;
+  int maxi=0;
+  for(int i=0;i<n;i++){
+    while(!st.empty() && ((i==n) || arr[st.top()]>=arr[i])){
+      int height=arr[st.top()];
+      st.pop();
+      int width;
+      if(st.empty()){
+        width=i;
+      }
+      else{
+        width=i-st.top()-1;
+      }
+      maxi=max(maxi,width*height);
+    }
+    st.push(i);
+  }
+  return maxi;
+}
+
 
 int main(){
 
     vector<int> arr={2,1,5,6,2,3};
-    cout<<func1(arr);
+    cout<<func3(arr);
 }
