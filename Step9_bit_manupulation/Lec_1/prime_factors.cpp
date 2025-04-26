@@ -32,7 +32,7 @@ void primeFactors(int n)
 
 int main() 
 { 
-    int n = 315; 
+    int n = 18; 
     primeFactors(n); 
     return 0; 
 }
