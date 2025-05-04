@@ -42,6 +42,27 @@ int func2(vector<int>& fruits) {  //O(2n)
     
 }
 
+int func3(vector<int>& fruits){
+    int n=fruits.size();
+    int r=0,l=0;
+    int maxlen=0;
+    unordered_map<int,int>mpp;
+    while(r<n){
+        mpp[fruits[r]]++;
+        if(mpp.size()>2){
+            mpp[fruits[l]]--;
+            if(mpp[fruits[l]]==0){
+                mpp.erase(fruits[l]);
+            }
+            l++;
+        }
+        if(mpp.size()<=2){
+            maxlen=max(maxlen,r-l+1);
+        }
+        r++;
+    }
+    return maxlen;
+}
 int main(){
     vector<int> v={1,2,1,4,4,4};
     cout<<func2(v);
