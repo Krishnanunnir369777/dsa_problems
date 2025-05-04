@@ -53,18 +53,18 @@ int func3(string s) {
   int len = 0;
   while (right < n) {
     if (mpp[s[right]] != -1)
-      left =mpp[s[right]] + 1;
+      left =max(mpp[s[right]] + 1,left);
 
     mpp[s[right]] = right;
 
     len = max(len, right - left + 1);
     right++;
   }
-  return len;
-    
+  return len; 
 }
+
   
 int main(){
     string s="abcabcbb";
-    cout<<func2(s);
+    cout<<func(s);
 }
