@@ -38,6 +38,11 @@ int func2(string s){
     return cnt;
 }
 
+int func2(string s){
+    int n=s.length();
+    vector<int> v(3,-1);
+    for( int )
+}
 int main(){
     string s="abcabc";
     cout<<func1(s);

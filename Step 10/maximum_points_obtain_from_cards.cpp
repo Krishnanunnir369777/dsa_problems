@@ -20,6 +20,7 @@ int func1(vector<int>& vec,int k){ // Time complexity O(2*k)
 
 }
 
+
 int main(){
     vector<int> vec={6,2,3,4,7,2,1,7,1};
     cout<<func1(vec,4);
