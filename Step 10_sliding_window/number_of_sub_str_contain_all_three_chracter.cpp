@@ -24,6 +24,7 @@ int func1(string s) {  //O(N^2)
 }
 
 
+
 int func2(string s){
     int n=s.length();
     int cnt=0;
@@ -38,11 +39,7 @@ int func2(string s){
     return cnt;
 }
 
-int func2(string s){
-    int n=s.length();
-    vector<int> v(3,-1);
-    for( int )
-}
+
 int main(){
     string s="abcabc";
     cout<<func1(s);
