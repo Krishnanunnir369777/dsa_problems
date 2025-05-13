@@ -2,40 +2,48 @@
 using namespace std;
 #include <bits/stdc++.h>
 
-void solve(int open,int close,string s,vector<string>& ans){
-    if(open==0 && close==0){
-        ans.push_back(s);
-        return ;
+void solve(string op, int open, int close, vector<string> &ans){
+        if(open == 0 && close == 0){
+            ans.push_back(op);
+            return;
+        }
+        //when count of open and close brackets are same then 
+        //we have only one choice to put open bracket 
+        if(open == close){
+            string op1 = op;
+            op1.push_back('(');
+            solve(op1, open-1, close, ans);
+        }
+        else if(open == 0){
+            //only choice is to put close brackets 
+            string op1 = op;
+            op1.push_back(')');
+            solve(op1, open, close-1, ans);
+        }
+        else if(close == 0){
+            //only choise is to use open bracket 
+            string op1 = op;
+            op1.push_back('(');
+            solve(op1, open-1, close, ans);
+        }
+        else{
+            string op1 = op;
+            string op2 = op;
+            op1.push_back('(');
+            op2.push_back(')');
+            
+            solve(op2, open, close-1, ans);
+            solve(op1, open-1, close, ans);
+        }
     }
-    if(open==close){
-        string s1=s;
-        s1.push_back('(');
-        solve(open-1,close,s1,ans);
+    vector<string> generateParenthesis(int n) {
+        int open = n;
+        int close = n;
+        vector<string> ans;
+        string op = "";
+        solve(op, open, close, ans);
+        return ans;
     }
-    else if(open ==0){
-        string s1=s;
-        s1.push_back(')');
-        solve(open,close-1,s1,ans);
-    }
-    else{
-        string s1=s;
-        string s2=s;
-        s1.push_back('(');
-        s2.push_back(')');
-        solve(open-1,close,s1,ans);
-        solve(open,close-1,s2,ans);
-    }
-}
-vector<string> func1(int n){
-    vector<string> ans;
-    string s="";
-    int open=n;
-    int close=n;
-    solve(open,close,s,ans);
-
-    return ans;
-
-}
 int main(){
     vector<string> ans=func1(3);
 
