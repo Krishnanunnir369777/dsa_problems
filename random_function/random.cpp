@@ -4,5 +4,8 @@ using namespace std;
 
 
 int main(){
+    vector<int> v={2,3,,6,7};
+    int target=7;
+    vector<vector<int>>
     
 }
