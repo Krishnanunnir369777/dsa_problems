@@ -38,7 +38,3 @@ int main() {
     root->left->right = new Node(5);
 }
 
-struct Node{
-    int data;
-    
-}
