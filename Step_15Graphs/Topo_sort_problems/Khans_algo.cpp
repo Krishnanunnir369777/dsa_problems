@@ -1,10 +1,10 @@
-include <bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 class Solution {
 public:
 	//Function to return list containing vertices in Topological order.
-	vector<int> topoSort(int V, vector<int> adj[])
+	vector<int> topoSort(int V, vector<int> adj[])                 //Time Complexity: O(V+E),
 	{
 		int indegree[V] = {0};
 		for (int i = 0; i < V; i++) {
