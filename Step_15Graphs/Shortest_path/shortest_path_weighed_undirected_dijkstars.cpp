@@ -33,7 +33,7 @@ vector<int> shortestPath(int n,int m,vector<vector<int>>& edges){    //Elog(V)
             }
         }
     }
-    if(dist[n]){
+    if(dist[n]==1e9){
         return {-1};
     }
     vector<int> path;
