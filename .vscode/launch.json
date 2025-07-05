@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/krish/OneDrive/Desktop/c++_dsa_projects/Step9_Linkedlist",
-      "program": "c:/Users/krish/OneDrive/Desktop/c++_dsa_projects/Step9_Linkedlist/build/Debug/outDebug",
+      "cwd": "c:/Users/krish/OneDrive/Desktop/c++_dsa_projects/Step_16_Dynamic_Programming/1_D_DP",
+      "program": "c:/Users/krish/OneDrive/Desktop/c++_dsa_projects/Step_16_Dynamic_Programming/1_D_DP/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
