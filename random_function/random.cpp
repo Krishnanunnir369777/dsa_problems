@@ -25,17 +25,7 @@ struct TreeNode {
 };
 
 
-class Solution {
-public:
-    // Function to perform level-order
-    // traversal of a binary tree
-    vector<vector<int>> levelOrder(TreeNode* root) {
-        if(root==nullptr){
-            return root;
-        }
-        
-    }
-};
+
 
 // Function to print
 // the elements of a vector
@@ -72,3 +62,7 @@ int main() {
 
     return 0;
 }
+
+
+
+

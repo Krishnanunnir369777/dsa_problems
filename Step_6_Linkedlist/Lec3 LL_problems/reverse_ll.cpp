@@ -32,7 +32,7 @@ Node* arr2ll(vector<int> &arr){
     return head;
 
 };
-
+  // brute
  Node* func(Node* head) {
     if(head==NULL || head->next==NULL){
         return head;

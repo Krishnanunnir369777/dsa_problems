@@ -21,6 +21,18 @@ Node* insertHeaad(Node* head,int val){
     temp->next=head;
     return temp;
 }
+Node* reverse(Node* head){
+    if(head==NULL || head->next==NULL){
+        return head;
+    }
+    stack<int> st;
+    Node* temp=head;
+    while(temp!=nullptr){
+        st.push(temp);
+        temp=temp->next;
+    }
+    
+}
 int main(){
     vector<int> arr = {12, 8, 5, 7};
     int val = 100;
@@ -38,4 +50,18 @@ int main(){
 
     return 0;
     
+}
+
+int find_height(Node* root){
+    if()
+}
+
+bool balanced(Node* root){
+    if(root==nullptr){
+        return true;
+    }
+    int left=find_height(root->left);
+    int right=find_height(root->right);
+
+    if(abs(left-right)>=1 && ba)
 }
