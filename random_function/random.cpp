@@ -64,8 +64,3 @@ int main() {
 }
 
 
-
-void dfs(int row,int col,int color,int ini,vector<vector<int>>& ans,vector<vector<int>>& image,int del_x[],int del_y[]){
-    ans[row][col]=color;
-    
-}
