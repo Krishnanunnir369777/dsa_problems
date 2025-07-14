@@ -68,8 +68,3 @@ int main() {
 
 
 
-
-int func(vector<vector<int>>& grid){
-    int n=grid.size();
-    int 
-}
