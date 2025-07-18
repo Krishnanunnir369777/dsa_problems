@@ -2,16 +2,18 @@
 #include <bits/stdc++.h>
 using namespace std;
  
-int func(int n,int r){
-    int ans=1;
-    for(int i=0;i<r;i++){
-        ans=ans*(n-i);
-        ans=ans/(i+1);
-    }
-    return ans;
+class Stack{
+    
+};
+int main() {
+    vector<vector<int>> matrix{
+        {5, 9, 6},
+        {11, 5, 2}
+    };
 
-}
-int main(){
-    
-    
+    int n = matrix.size();
+    int m = matrix[0].size();
+
+    cout << "Minimum sum path: " << minSumPath(n, m, matrix) << endl;
+    return 0;
 }
