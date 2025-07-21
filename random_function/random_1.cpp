@@ -2,9 +2,7 @@
 #include <bits/stdc++.h>
 using namespace std;
  
-class Stack{
-    
-};
+
 int main() {
     vector<vector<int>> matrix{
         {5, 9, 6},

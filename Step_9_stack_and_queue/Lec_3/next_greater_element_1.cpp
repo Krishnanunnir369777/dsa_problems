@@ -34,6 +34,41 @@ vector<int> func1(vector<int>& nums1, vector<int>& nums2) {
     
 }
 
+
+
+//another brute force
+vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        vector<int> ans;
+        int n1=nums1.size();
+        int n2=nums2.size();
+        map<int,int> mpp;
+        for(int i=0;i<n2;i++){
+            mpp[nums2[i]]=i;
+        }
+        for(int i=0;i<n1;i++){
+            bool done=false;
+            for(int j=mpp[nums1[i]];j<n2;j++){
+                if(nums2[j]>nums1[i]){
+                    ans.push_back(nums2[j]);
+                    done=true;
+                    break;
+                }
+            }
+            if(done==false){
+                ans.push_back(-1);
+            }
+        }
+        return ans;
+    }
+
+
+
+
+
+
+
+
+
 vector<int> func2(vector<int>& nums1, vector<int>& nums2) {
     vector<int> ans;
     for(int i=0;i<nums1.size();i++){

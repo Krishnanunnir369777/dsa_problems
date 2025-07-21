@@ -26,7 +26,7 @@ int sumSubarrayMins(vector<int>& nums) {            //O(5N)
     vector<int> right(length, length);
     stack<int> stk;
 
-    for (int i = 0; i < length; ++i) {
+    for (int i = 0; i < length; ++i) {  //previous smallest
         while (!stk.empty() && nums[stk.top()] >= nums[i]) {
             stk.pop();
         }
@@ -38,7 +38,7 @@ int sumSubarrayMins(vector<int>& nums) {            //O(5N)
 
     stk = stack<int>();
 
-    for (int i = length - 1; i >= 0; --i) {
+    for (int i = length - 1; i >= 0; --i) { // next smallest
         while (!stk.empty() && nums[stk.top()] > nums[i]) {
             stk.pop();
         }
