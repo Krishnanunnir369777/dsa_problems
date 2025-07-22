@@ -21,7 +21,7 @@ int func2(vector < int > & heights) {  //Time Complexity: O( N )
     stack < int > st;
     int leftsmall[n], rightsmall[n];
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) { // finding left min index
       while (!st.empty() && heights[st.top()] >= heights[i]) {
         st.pop();
       }
@@ -35,7 +35,7 @@ int func2(vector < int > & heights) {  //Time Complexity: O( N )
     while (!st.empty())
       st.pop();
 
-    for (int i = n - 1; i >= 0; i--) {
+    for (int i = n - 1; i >= 0; i--) { //finding right min index
       while (!st.empty() && heights[st.top()] >= heights[i])
         st.pop();
 
