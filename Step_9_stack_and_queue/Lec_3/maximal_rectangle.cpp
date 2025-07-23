@@ -35,7 +35,7 @@ int maximal_area(vcetor<vector<char>>& matrix){
     int col=matrix[0].size();
     vector<int> heights(col,0);
     int maxArea=0;
-    for(int i=row;i<row;i++){
+    for(int i=0;i<row;i++){
         for(int j=0;j<col;j++){
             heights[j]=(matrix[i][j]=='1') ? heights[j]+1 :0;
         }
