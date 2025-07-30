@@ -26,7 +26,7 @@ int func1(vector<int>& nums, int k) {   //O(n^2)
 }
 
 
-int func2(vector<int>& nums, int k) {
+int func2(vector<int>& nums, int k) {      //O(2N)
     int n=nums.size();
     int l=0,r=0;
     int cnt=0;
@@ -51,6 +51,7 @@ int func2(vector<int>& nums, int k) {
     return maxi;
 }
 
+   //OPTIMISED
 int func3(vector<int>& nums,int k){   //O(n)
     int n=nums.size();
     int r=0,l=0;
