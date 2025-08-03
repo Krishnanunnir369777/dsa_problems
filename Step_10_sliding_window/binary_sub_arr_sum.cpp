@@ -46,7 +46,7 @@ int func3(vector<int>& nums,int goal){        //here finding number of subarrays
             sum=sum-nums[l];
             l++;
         }
-        cnt=cnt+(r-l+1);
+        cnt=cnt+(r-l+1);  //// for current r, number of valid subarrays ending at r
         r++;
     }
     return cnt;

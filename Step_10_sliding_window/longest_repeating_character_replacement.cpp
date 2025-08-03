@@ -27,7 +27,7 @@ int func1(string s, int k) {  //O(N^2)
 
 
 
-int func2(string s, int k) {  //O(n*n)
+int func2(string s, int k) {  //O(n+n)*26
     int n=s.length();
     int l=0,r=0;
     int maxlen=0,maxfreq=0;
