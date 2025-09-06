@@ -22,6 +22,9 @@ bool subsetSumToK(int n,int k,vector<int>& arr){
 }
 
 
+
+
+
 //memoization
 // Function to check if there is a subset of 'arr' with a sum equal to 'target'
 bool subsetSumUtil(int ind, int target, vector<int>& arr, vector<vector<int>>& dp) {
