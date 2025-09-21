@@ -1,18 +1,29 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool func(int idx,int k,vector<int>& arr){
-    if(k==0){
-        return true;
+bool canPartition(int n,vector<int>& arr){
+    int sum=0;
+    for(int i=0;i<n;i++){
+        sum+=arr[i];
     }
-    if(idx==0){
-        return arr[idx]==k;
+    if(sum%2!=0){
+        return false;
     }
-    bool pick=func(idx-1,k,arr);
-    bool un_pick=false;
-    if(k>=arr[idx]){
-        un_pick=func(idx-1,k-arr[idx],arr);
+    else{
+        int target=sum/2;
+        vector<vector<bool>> dp(n,vector<bool>(target+1,false));
+        
+        
     }
-    return pick || un_pick;
+}
+int main() {
+    vector<int> arr = {2, 3, 3, 3, 4, 5};
+    int n = arr.size();
 
+    if (canPartition(n, arr))
+        cout << "The Array can be partitioned into two equal subsets";
+    else
+        cout << "The Array cannot be partitioned into two equal subsets";
+
+    return 0;
 }
