@@ -6,26 +6,27 @@ public:
     // Function to implement Dijkstra's Algorithm
     vector<int> dijkstra(int V, vector<vector<pair<int,int>>>& adj, int src) {
         vector<int> dist(V,1e9);
-		priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> pq;
-		pq.push({0,src});
-		while(!pq.empty()){
-			int d=pq.top().first;
-			int node=pq.top().second;
-			pq.pop();
-			if(d>dist[node]){
-				continue;
-			}
-			for(auto it:adj[node]){
-				int next=it.first;
-				int wt=it.second;
-
-				if(dist[node]+wt<dist[next]){
-					dist[next]=dist[node]+wt;
-					pq.push({dist[next],next});
-				}
-			}
-		}
-		return dist;
+        dist[src]=0;
+        priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> pq;
+        
+        pq.push({0,src});
+        while(!pq.empty()){
+            int node=pq.top().second;
+            int dis=pq.top().first;
+            pq.pop();
+            if(dis>dist[node]){
+                continue;
+            }
+            for(auto it:adj[node]){
+                int next=it.first;
+                int wt=it.second;
+                if(dist[node]+wt<dist[next]){
+                    dist[next]=dist[node]+wt;
+                    pq.push({dist[next],next});
+                }
+            }
+        }
+        return dist;
     }
 };
 
@@ -46,7 +47,7 @@ int main() {
 
     // Run algorithm
     Solution obj;
-    vector<int> dist = obj.dijkstra(V, adj, 1);
+    vector<int> dist = obj.dijkstra(V, adj, 0);
 
     // Print shortest distances
     for (int i = 0; i < V; i++) {
