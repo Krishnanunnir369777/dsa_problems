@@ -2,7 +2,7 @@
 using namespace std;
 
 class Solution {
-public:
+public:  
     // Function to implement Dijkstra's Algorithm
     vector<int> dijkstra(int V, vector<vector<pair<int,int>>>& adj, int src) {
         vector<int> dist(V,1e9),parent(V);
