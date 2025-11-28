@@ -2,44 +2,48 @@
 using namespace std;
 
 class Solution {
-public:  
+public:
     // Function to implement Dijkstra's Algorithm
     vector<int> dijkstra(int V, vector<vector<pair<int,int>>>& adj, int src) {
-        vector<int> dist(V,1e9),parent(V);
-        for(int i=0;i<V;i++){
-            parent[i]=i;
-        }
-        dist[src]=0;
-        priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> pq;
-        pq.push({0,src});
-        while(!pq.empty()){
-            int node=pq.top().second;
-            int dis=pq.top().first;
-            pq.pop();
-            if(dis>dist[node]){
-                continue;
-            }
-            for(auto it:adj[node]){
-                int next=it.first;
-                int wt=it.second;
-                if(wt+dist[node]<dist[next]){
-                dist[next]=wt+dist[node];
-                pq.push({dist[next],next});
-                parent[next]=node;
-            }
-            }
-        }
-        vector<int> path;
-        int node=V-1;
-        while(parent[node]!=node){
-            path.push_back(node);
-            node=parent[node];
-        }
-        path.push_back(0);
-        reverse(path.begin(),path.end());
-        return path;
+        // Distance array initialized to large value
+        vector<int> dist(V, 1e9);
 
-        
+        // Min-heap storing {distance, node}
+        priority_queue<pair<int,int>, vector<pair<int,int>>, 
+                       greater<pair<int,int>>> pq;
+
+        // Distance to source is 0
+        dist[src] = 0;
+
+        // Push source into heap
+        pq.push({0, src});
+
+        // Process nodes until heap is empty
+        while (!pq.empty()) {
+            // Extract node with minimum distance
+            int d = pq.top().first;
+            int node = pq.top().second;
+            pq.pop();
+
+            // Skip if this distance is outdated
+            if (d > dist[node]) continue;
+
+            // Traverse all adjacent neighbors
+            for (auto it : adj[node]) {
+                int next = it.first;
+                int wt = it.second;
+
+                // Relaxation check
+                if (dist[node] + wt < dist[next]) {
+                    // Update distance
+                    dist[next] = dist[node] + wt;
+
+                    // Push updated distance into heap
+                    pq.push({dist[next], next});
+                }
+            }
+        }
+        return dist;
     }
 };
 
@@ -60,11 +64,10 @@ int main() {
 
     // Run algorithm
     Solution obj;
-    vector<int> path = obj.dijkstra(V, adj, 0);
+    vector<int> dist = obj.dijkstra(V, adj, 0);
 
     // Print shortest distances
-    for (int i = 0; i < path.size(); i++) {
-        cout << path[i]<<" ";
+    for (int i = 0; i < V; i++) {
+        cout << "Distance from 0 to " << i << " = " << dist[i] << endl;
     }
 }
-

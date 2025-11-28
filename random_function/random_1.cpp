@@ -1,14 +1,13 @@
+#include <iostream>
 #include <bits/stdc++.h>
 using namespace std;
 
-class Solution {
-public:
-    // Function to implement Dijkstra's Algorithm
-    vector<int> dijkstra(int V, vector<vector<pair<int,int>>>& adj, int src) {
+class Solution{
+    public:
+    vector<int> dijkstra(int V,vector<vector<pair<int,int>>>& adj,int src){
         vector<int> dist(V,1e9);
         dist[src]=0;
         priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> pq;
-        
         pq.push({0,src});
         while(!pq.empty()){
             int node=pq.top().second;
@@ -27,11 +26,11 @@ public:
             }
         }
         return dist;
+
     }
 };
 
-int main() {
-    // Number of vertices
+int main(){
     int V = 5;
 
     // Adjacency list {neighbor, weight}
@@ -45,12 +44,9 @@ int main() {
     adj[2].push_back({4, 3});
     adj[3].push_back({4, 2});
 
-    // Run algorithm
     Solution obj;
-    vector<int> dist = obj.dijkstra(V, adj, 0);
-
-    // Print shortest distances
-    for (int i = 0; i < V; i++) {
-        cout << "Distance from 0 to " << i << " = " << dist[i] << endl;
+    vector<int> ans=obj.dijkstra(V,adj,0);
+    for(int i=0;i<ans.size();i++){
+        cout<<ans[i]<<" ";
     }
 }
