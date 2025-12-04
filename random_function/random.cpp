@@ -1,48 +1,58 @@
 #include <bits/stdc++.h>
 using namespace std;
-#include <bits/stdc++.h>
-using namespace std;
 
-class Solution {
+class Solution
+{
 public:
-	/*  Function to implement Bellman Ford
-	*   edges: vector of vectors which represents the graph
-	*   S: source vertex to start traversing graph with
-	*   V: number of vertices
-	*/
-	vector<int> bellman_ford(int V, vector<vector<int>>& edges, int S) {
-		vector<int> dist(V,1e9);
-        for(int i=0;i<V-1;i++){
-            for(auto it:edges){
-                int u=it[0];
-                int v=it[1];
-                int dis=it[2];
-                if(dist[u]!)
-            }
-        }
+	//Function to find sum of weights of edges of the Minimum Spanning Tree.
+	int spanningTree(int V, vector<vector<int>> adj[])
+	{
+		priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> pq;
+		pq.push({0,0});
+		vector<int> vis(V,0);
+		
+		int sum=0;
+		while(!pq.empty()){
+			int wt=pq.top().first;
+			int node=pq.top().second;
+			pq.pop();
+			if(vis[node]){
+				continue;
+			}
+			sum+=wt;
+			vis[node]=1;
+			for(auto it:adj[node]){
+				int adj_node=it[0];
+				int adj_wt=it[1];
+				if(!vis[adj_node]){
+					pq.push({adj_wt,adj_node});
+				}
+			}
+		}
+		return sum;
 	}
 };
 
 
 int main() {
 
-	int V = 6;
-	vector<vector<int>> edges(7, vector<int>(3));
-	edges[0] = {3, 2, 6};
-	edges[1] = {5, 3, 1};
-	edges[2] = {0, 1, 5};
-	edges[3] = {1, 5, -3};
-	edges[4] = {1, 2, -2};
-	edges[5] = {3, 4, -2};
-	edges[6] = {2, 4, 3};
+	int V = 5;
+	vector<vector<int>> edges = {{0, 1, 2}, {0, 2, 1}, {1, 2, 1}, {2, 3, 2}, {3, 4, 1}, {4, 2, 2}};
+	vector<vector<int>> adj[V];
+	for (auto it : edges) {
+		vector<int> tmp(2);
+		tmp[0] = it[1];
+		tmp[1] = it[2];
+		adj[it[0]].push_back(tmp);
 
-	int S = 0;
-	Solution obj;
-	vector<int> dist = obj.bellman_ford(V, edges, S);
-	for (auto d : dist) {
-		cout << d << " ";
+		tmp[0] = it[0];
+		tmp[1] = it[2];
+		adj[it[1]].push_back(tmp);
 	}
-	cout << endl;
+
+	Solution obj;
+	int sum = obj.spanningTree(V, adj);
+	cout << "The sum of all the edge weights: " << sum << endl;
 
 	return 0;
 }
