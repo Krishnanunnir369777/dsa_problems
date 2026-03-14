@@ -1,41 +1,41 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+
 class Solution {
 public:
-    // Solve function using recursion with memoization
-    // ind -> current index the frog needs to reach
-    // height -> vector of heights
-    // dp -> memo table where dp[i] stores min cost to reach i
-    
-
-    // Helper to handle edge cases and start recursion
-    int frogJump(const vector<int>& height) {
-        // Handle empty input
-        int n=height.size();
-        int prev2=0,prev1=0;
-        dp[0]=0;
-        for(int i=1;i<n;i++){
-            int one_jump=prev1+abs(height[i]-height[i-1]);
-            int two_jump=INT_MAX;
-            if(i>1){
-                two_jump=prev2+abs(height[i]-height[i-2]);
+    /* Function to find the length of 
+    the Longest Common Substring (LCS) */
+    int longestCommonSubstr(string str1, string str2) {
+        int maxi=0;
+        int n=str1.length(),m=str2.length();
+        
+        vector<int> prev(m+1,0),curr(m+1,0);
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<=m;j++){
+                if(str1[i-1]==str2[j-1]){
+                    curr[j]=1+prev[j-1];
+                    maxi=max(maxi,curr[j]);
+                }
+                else{
+                    curr[j]=0;
+                }
             }
-            dp[i]=min(one_jump,two_jump);
+            prev=curr;
         }
-        return dp[n-1];
+        return maxi;
     }
 };
 
 int main() {
-    // Define the heights array
-    vector<int> height{30, 10, 60, 10, 60, 50};
+    string s1 = "abcjklp";
+    string s2 = "acjkp";
 
-    // Create Solution instance
+    // Create an instance of Solution class
     Solution sol;
-
-    // Compute and print the minimum energy
-    cout << sol.frogJump(height) << endl; // Expected: 40
+    
+    // Print the result
+    cout << "The Length of Longest Common Substring is " << sol.longestCommonSubstr(s1, s2) << endl;
 
     return 0;
 }
